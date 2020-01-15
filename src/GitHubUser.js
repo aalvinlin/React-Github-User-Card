@@ -27,19 +27,19 @@ class GitHubUser extends React.Component {
 
   componentDidMount() {
 
-    console.log("Current username:", this.props.match.params.login);
-
     let username = this.props.match.params.login;
 
-    if (this.props.match.params.login)
-      { this.setState({username: username}); }
-    else
-    { this.setState({username: "test"}); }
+    if (!username)
+      { username = "aalvinlin"; }
+    
+    this.setState({username: username});
 
     // get user info
     axios
     .get("https://api.github.com/users/" + username)
     .then((response) => {
+
+      console.log(response);
 
       this.setState({ userData: response.data })
 
@@ -62,12 +62,12 @@ class GitHubUser extends React.Component {
   }
 
   // just added in...couldn't test because API request exceeded
-  shouldComponentUpdate() {
+  // shouldComponentUpdate() {
 
-    console.log("should component update?", (this.props.match.params.login !== this.state.username))
+  //   console.log("should component update?", (this.props.match.params.login !== this.state.username))
 
-    return (this.props.match.params.login !== this.state.username)
-  }
+  //   return (this.props.match.params.login !== this.state.username)
+  // }
 
   render() {
 

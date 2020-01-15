@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class FollowerCard extends React.Component {
 
@@ -29,18 +29,15 @@ class FollowerCard extends React.Component {
                 {this.props.orientation === "right" ?
 
                 <div className="nameAndImg">
-                    <h3><a href={"/" + follower.login}>{follower.login}</a></h3>
-                    {/* <Link to={"/user/" + follower.login}>(View Profile)</Link> */}
+                    <h3><Link to={"/" + follower.login}>{follower.login}</Link></h3>
                     <img src={follower["avatar_url"]} />
                 </div>
 
                 :
 
                 <div className="nameAndImg">
-                    
-                    {/* <Link to={"/user/" + follower.login}>(View Profile)</Link> */}
                     <img src={follower["avatar_url"]} />
-                    <h3><a href={"/" + follower.login}>{follower.login}</a></h3>
+                    <h3><Link to={"/" + follower.login}>{follower.login}</Link></h3>
                 </div>
                 }
 

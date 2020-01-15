@@ -54,24 +54,6 @@ class App extends React.Component {
       console.log("Error:", response)
     })
 
-    //   // make another axios call to get user's data
-    //   response.data.map(user => {
-
-    //     axios
-    //     .get("https://api.github.com/users/" + user.login)
-    //     .then((response) => {
-
-    //       this.setState({ followerData: [...this.state.followerData, response.data] })
-    //     })
-        // .catch((response) => {
-        //   console.log("Error:", response)
-        // })
-
-
-    //   })
-
-    // })
-
     // // get info for the peple the user is following
     // axios
     //   .get("https://api.github.com/users/" + this.state.username + "/following")
@@ -99,7 +81,6 @@ class App extends React.Component {
         <UserContainer userData={this.state.userData}/>
 
         <FollowerContainer followerData={this.state.followerData}/>
-        {/* <FollowingContainer followingData={this.state.followingData}/> */}
         
       </div>
     )

@@ -51,7 +51,7 @@ class UserCard extends React.Component {
                         <p className="userFollowers">{userData.followers} followers</p>
                         <p className="userFollowing">{userData.following} following</p>
                     </div>
-                    <p className='userBio'>{(userData.bio ? userData.bio : "bio goes here...")}</p>
+                    <p className='userBio'>{(userData.bio ? userData.bio : "")}</p>
                 </div>
             </div>
             )

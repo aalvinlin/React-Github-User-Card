@@ -9,7 +9,7 @@ class StarBackground extends React.Component {
         const colors = ["#FFFFFF", "#CCCCCC", "#FFFF99", "#FFCC00"];
         this.state = { stars: [] };
 
-        for (let i = 0; i < 1000; i+= 1)
+        for (let i = 0; i < 2000; i+= 1)
         {
             let size = (Math.floor(Math.random() * 2) + 1) + "px";
 

@@ -1,8 +1,6 @@
 * {
     box-sizing: border-box;
     font-family: Verdana;
-
-    /* border: 1px solid white; */
 }
 
 p {
@@ -70,10 +68,12 @@ a:active, a:hover {
     top: 0;
     left: 0;
     
-    width: 100vh;
-    min-height: 200vh;
+    width: 100%;
+    min-height: 250vh;
 
     z-index: -1;
+
+    overflow: hidden;
 }
 
 .star {

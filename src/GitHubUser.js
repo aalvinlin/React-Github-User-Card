@@ -15,6 +15,8 @@ class GitHubUser extends React.Component {
   constructor() {
     super();
 
+    console.log("In GitHubUser constructor...");
+
     this.state = {
       username: "aalvinlin",
       userData: [],

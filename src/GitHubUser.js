@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { withRouter } from "react-router";
 import axios from "axios";
 
 import StarBackground from "./components/StarBackground";
@@ -25,12 +25,19 @@ class GitHubUser extends React.Component {
 
   componentDidMount() {
 
+    console.log(this.props.match.params.login);
+
+    let username = this.props.match.params.login;
+
+    if (this.props.match.params.login)
+      { this.setState({username: username}); }
+    else
+      { username = "aalvinlin"; }
+
     // get user info
     axios
-    .get("https://api.github.com/users/" + this.state.username)
+    .get("https://api.github.com/users/" + username)
     .then((response) => {
-
-      console.log(response.data);
 
       this.setState({ userData: response.data })
 
@@ -41,12 +48,11 @@ class GitHubUser extends React.Component {
 
     // // get info for the user's followers
     axios
-    .get("https://api.github.com/users/" + this.state.username + "/followers")
+    .get("https://api.github.com/users/" + username + "/followers")
     .then((response) => {
 
-      console.log(response.data);
-
       this.setState({ followerData: response.data });
+
     })
     .catch((response) => {
       console.log("Error:", response)
@@ -68,8 +74,6 @@ class GitHubUser extends React.Component {
 
   render() {
 
-    console.log("followerData in render():", this.state.followerData);
-
     return (
 
       <div className="content">
@@ -86,4 +90,4 @@ class GitHubUser extends React.Component {
 
 }
 
-export default GitHubUser;
+export default withRouter(GitHubUser);

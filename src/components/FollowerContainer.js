@@ -14,8 +14,6 @@ class FollowerContainer extends React.Component {
             pairedFollowerData.push([followerData[i], followerData[i + 1]])
         }
 
-        {console.log("In FollowerContainer: ", followerData)}
-
         if (followerData.length === 0)
             { return <div><h3>Loading follower data...</h3></div> }
 

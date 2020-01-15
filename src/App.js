@@ -7,10 +7,6 @@ class App extends React.Component {
 
 render() {
 
-
-    console.log("matching...", this.props.match);
-
-
     return (
 
         <>

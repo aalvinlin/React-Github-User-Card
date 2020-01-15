@@ -11,7 +11,6 @@ class UserContainer extends React.Component {
         return (
 
             <section className="userContainer">
-                <h1>GitHub User Profile</h1>
                 <UserCard userData={this.props.userData}/>
             </section>
 

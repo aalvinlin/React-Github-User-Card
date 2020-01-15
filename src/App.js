@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Route as BrowserRouter } from "react-router-dom";
+
 import axios from "axios";
 
 import StarBackground from "./components/StarBackground";
@@ -18,29 +20,80 @@ class App extends React.Component {
     this.state = {
       username: "aalvinlin",
       userData: [],
-      followingData: [],
-      followerData: []
-    }
+      followerData: [
+
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
+    
+    ]};
+
   }
 
   componentDidMount() {
 
+    // get user info
     axios
     .get("https://api.github.com/users/" + this.state.username)
     .then((response) => {
 
       console.log(response.data);
 
-      this.setState({
-        userData: response.data
-      })
-
-      console.log("updated state in componentDidMount")
+      this.setState({ userData: response.data })
 
     })
+    .catch((response) => {
+      console.log("Error:", response)
+    })
+
+    // // get info for the user's followers
+    // axios
+    // .get("https://api.github.com/users/" + this.state.username + "/followers")
+    // .then((response) => {
+
+    //   // console.log(response.data);
+
+    //   // this.setState({ followerData: response.data.map(user => user.login) })
+
+    //   // make another axios call to get user's data
+    //   response.data.map(user => {
+
+    //     axios
+    //     .get("https://api.github.com/users/" + user.login)
+    //     .then((response) => {
+
+    //       this.setState({ followerData: [...this.state.followerData, response.data] })
+    //     })
+        // .catch((response) => {
+        //   console.log("Error:", response)
+        // })
+
+
+    //   })
+
+    // })
+
+    // // get info for the peple the user is following
+    // axios
+    //   .get("https://api.github.com/users/" + this.state.username + "/following")
+    //   .then((response) => {
+
+    //     console.log(response.data);
+
+    //     this.setState({ followingData: response.data.map(user => user.login) })
+
+    //   })
+
   }
 
+
   render() {
+
+    console.log("followerData in render():", this.state.followerData);
 
     return (
 
@@ -49,9 +102,10 @@ class App extends React.Component {
         <StarBackground />
 
         <UserContainer userData={this.state.userData}/>
-        <FollowingContainer followingData={this.state.followingData}/>
+
         <FollowerContainer followerData={this.state.followerData}/>
-      
+        <FollowingContainer followingData={this.state.followingData}/>
+        
       </div>
     )
   }

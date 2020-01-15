@@ -1,90 +1,29 @@
 import React from "react";
+import GitHubUser from "./GitHubUser";
 
 import { Route } from "react-router-dom";
 
-import axios from "axios";
-
-import StarBackground from "./components/StarBackground";
-
-import UserContainer from "./components/UserContainer";
-import FollowingContainer from "./components/FollowingContainer";
-import FollowerContainer from "./components/FollowerContainer";
-
-import "./app.css";
-
 class App extends React.Component {
 
-  constructor() {
-    super();
-
-    this.state = {
-      username: "aalvinlin",
-      userData: [],
-      followerData: []
-    };
-
-  }
-
-  componentDidMount() {
-
-    // get user info
-    axios
-    .get("https://api.github.com/users/" + this.state.username)
-    .then((response) => {
-
-      console.log(response.data);
-
-      this.setState({ userData: response.data })
-
-    })
-    .catch((response) => {
-      console.log("Error:", response)
-    })
-
-    // // get info for the user's followers
-    axios
-    .get("https://api.github.com/users/" + this.state.username + "/followers")
-    .then((response) => {
-
-      console.log(response.data);
-
-      this.setState({ followerData: response.data });
-    })
-    .catch((response) => {
-      console.log("Error:", response)
-    })
-
-    // // get info for the peple the user is following
-    // axios
-    //   .get("https://api.github.com/users/" + this.state.username + "/following")
-    //   .then((response) => {
-
-    //     console.log(response.data);
-
-    //     this.setState({ followingData: response.data.map(user => user.login) })
-
-    //   })
-
-  }
+render() {
 
 
-  render() {
+    console.log("matching...", this.props.match);
 
-    console.log("followerData in render():", this.state.followerData);
 
     return (
 
-      <div className="content">
+        <>
+            <Route exact path="/">
+                <GitHubUser />
+            </Route>
 
-        <StarBackground />
-
-        <UserContainer userData={this.state.userData}/>
-
-        <FollowerContainer followerData={this.state.followerData}/>
-        
-      </div>
+            <Route path="/:login">
+                <GitHubUser />
+            </Route>
+        </>
     )
-  }
+}
 
 }
 

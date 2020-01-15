@@ -104,6 +104,8 @@ a:active, a:hover {
     width: 120px;
 
     margin-left: 4rem;
+
+    clip-path: circle();    
 }
 
 .userContainer p {
@@ -152,7 +154,7 @@ p.userBio {
 
     display: flex;
 
-    margin: 2rem auto;
+    margin: 1rem auto;
 
 }
 
@@ -170,11 +172,14 @@ p.userBio {
 
 
 .followerCard h3 {
+    font-size: 1.5rem;
     margin: 0 auto;
     text-align: center;
 }
 
 .followerCard img {
-    margin-left: 1rem;
+    margin: 1rem;
     width: 60px;
+    /* clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); */
+    clip-path: circle();
 }

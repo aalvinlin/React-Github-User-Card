@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route as BrowserRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import axios from "axios";
 
@@ -20,17 +20,8 @@ class App extends React.Component {
     this.state = {
       username: "aalvinlin",
       userData: [],
-      followerData: [
-
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-      {login: "test", name: "Full Name", location: "location", followers: 100, following: 80},
-    
-    ]};
+      followerData: []
+    };
 
   }
 
@@ -51,13 +42,17 @@ class App extends React.Component {
     })
 
     // // get info for the user's followers
-    // axios
-    // .get("https://api.github.com/users/" + this.state.username + "/followers")
-    // .then((response) => {
+    axios
+    .get("https://api.github.com/users/" + this.state.username + "/followers")
+    .then((response) => {
 
-    //   // console.log(response.data);
+      console.log(response.data);
 
-    //   // this.setState({ followerData: response.data.map(user => user.login) })
+      this.setState({ followerData: response.data });
+    })
+    .catch((response) => {
+      console.log("Error:", response)
+    })
 
     //   // make another axios call to get user's data
     //   response.data.map(user => {
@@ -104,7 +99,7 @@ class App extends React.Component {
         <UserContainer userData={this.state.userData}/>
 
         <FollowerContainer followerData={this.state.followerData}/>
-        <FollowingContainer followingData={this.state.followingData}/>
+        {/* <FollowingContainer followingData={this.state.followingData}/> */}
         
       </div>
     )

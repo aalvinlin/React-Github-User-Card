@@ -16,6 +16,9 @@ class FollowerContainer extends React.Component {
 
         {console.log("In FollowerContainer: ", followerData)}
 
+        if (followerData.length === 0)
+            { return <div><h3>Loading follower data...</h3></div> }
+
         return (
 
             <section className="followerContainer">
@@ -26,12 +29,12 @@ class FollowerContainer extends React.Component {
 
                         return (
                             <div className="followerPair" key={"followerPair" + id}>
-                                <FollowerCard key={"follower" + (2 * id)} id={id} follower={follower[0]} />
+                                <FollowerCard key={"follower" + (2 * id)} id={id} follower={follower[0]} orientation="left" />
 
                                 {/* if there is an odd number of followers, return an empty div */}
 
                                 {
-                                    follower[1] ? <FollowerCard key={"follower" + (2 * id + 1)} id={id} follower={follower[1]} />
+                                    follower[1] ? <FollowerCard key={"follower" + (2 * id + 1)} id={id} follower={follower[1]} orientation="right" />
                                     :
                                     <></>
                                 }

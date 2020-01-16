@@ -5,7 +5,6 @@ import axios from "axios";
 import StarBackground from "./components/StarBackground";
 
 import UserContainer from "./components/UserContainer";
-import FollowingContainer from "./components/FollowingContainer";
 import FollowerContainer from "./components/FollowerContainer";
 
 import "./app.css";
@@ -27,13 +26,26 @@ class GitHubUser extends React.Component {
 
   componentDidMount() {
 
+    let username = this.getUsernameFromUrl();
+
+    this.setState({username: username});
+
+    this.retrieveUserData(username);
+  }
+
+  getUsernameFromUrl = () => {
+
     let username = this.props.match.params.login;
 
     if (!username)
       { username = "aalvinlin"; }
-    
-    this.setState({username: username});
 
+    return username;
+    
+  }
+
+  retrieveUserData = (username) => {
+    
     // get user info
     axios
     .get("https://api.github.com/users/" + username)
@@ -59,14 +71,15 @@ class GitHubUser extends React.Component {
     .catch((response) => {
       console.log("Error:", response)
     })
+
   }
 
-  // just added in...couldn't test because API request exceeded
-  // shouldComponentUpdate() {
+  // shouldComponentUpdate(nextProps, nextState) {
 
-  //   console.log("should component update?", (this.props.match.params.login !== this.state.username))
+  //   console.log("should component update?");
+  //   console.log("URL:", this.getUsernameFromUrl(), "this.state.username:", this.state.username);
 
-  //   return (this.props.match.params.login !== this.state.username)
+  //   return this.state.username != nextState.username;
   // }
 
   render() {

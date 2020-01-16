@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+
+p {
+    margin: 0;
+}
+
+body {
+
+    color: #CCCCCC;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 62.5%;
+    min-height: 100vh;
+
+    background-image: linear-gradient(#000011, #003366,#336699, #996699);
+    
+    background-repeat: no-repeat;
+}
+
+
+/* Heading styles */
+
+h1, .followerContainer h2, .followingContainer h2 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px #333333;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 2rem;
+    text-shadow: 1px 1px 0px #333333;
+}
+
+a {
+    color: #CCCC66;
+    text-decoration: none;
+}
+
+a:active, a:hover {
+    color: #FFFF99;
+    text-decoration: underline;
+}
+
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.starBackground {
+    
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    min-height: 250vh;
+
+    z-index: -1;
+
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    border-radius: 100%;
+}
+
+.userContainer {
+    min-height: 50vh;
+}
+
+.userContainer, .followerContainer, .followingContainer {
+    padding: 5vh;
+}
+
+.nameAndImg {
+    display: flex;
+    align-items: center;
+}
+
+.statsAndBio {
+    display: flex;
+}
+
+/* Indent lines of card more and more */
+
+.userContainer img {
+    width: 120px;
+
+    margin-left: 4rem;
+
+    clip-path: circle();    
+}
+
+.userContainer p {
+    line-height: 4rem;
+}
+
+.userRepos {
+    margin-left: 4rem;
+}
+
+.userLocation {
+    margin-left: 8rem;
+}
+
+.userFollowers {
+    margin-left: 12rem;
+}
+
+.userFollowing {
+    margin-left: 16rem;
+}
+
+p.userBio {
+    margin-top: 1rem;
+    margin-left: 4rem;
+
+    font-style: oblique;
+    font-size: 1.25rem;
+    line-height: 2rem;
+
+    width: 25vh;
+}
+
+/* Styles for followerContainer */
+
+.followerPair {
+    display: flex;
+}
+
+.followerContainer h2 {
+    text-align: right;
+}
+
+.followerCard {
+    width: 100%;
+
+    display: flex;
+
+    margin: 1rem auto;
+
+}
+
+.zigZagLeft {
+    justify-content: flex-start;
+}
+
+.zigZagCenter {
+    justify-content: center;
+}
+
+.zigZagRight {
+    justify-content: flex-end;
+}
+
+
+.followerCard h3 {
+    font-size: 1.5rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.followerCard img {
+    margin: 1rem;
+    width: 60px;
+    /* clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); */
+    clip-path: circle();
+}
